@@ -24,12 +24,10 @@ class MovieAdapter (private val list: List<Movie>): RecyclerView.Adapter<MovieAd
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         private val title = itemView.nome_filme
         private val year = itemView.ano_filme
-        private val gender = itemView.genero_filme
 
         fun bindView(holder: Movie){
-            title.text = holder.title_name
-            year.text = holder.year.toString()
-            gender.text = holder.gender
+            title.text = holder.title
+            year.text = holder.release_date
         }
     }
 

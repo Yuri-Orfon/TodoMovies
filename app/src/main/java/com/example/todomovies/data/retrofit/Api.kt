@@ -6,8 +6,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 object Api {
     private fun initRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://api.themoviedb.org/3/movie/76341?api_key=24dbe7a6b21397dea9854fa3b025b27f")
+            .baseUrl("https://api.themoviedb.org/3/movie/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
+
+    val serviceMovie: Service = initRetrofit()
+        .create(Service::class.java)
 }

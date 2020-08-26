@@ -31,5 +31,6 @@ class MainActivity : AppCompatActivity() {
             }
         })
         viewModel.getMovies()
+        viewModel.getMoviesApi()
     }
 }
