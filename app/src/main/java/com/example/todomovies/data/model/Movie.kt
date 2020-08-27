@@ -9,10 +9,13 @@ data class Movie (
     val title: String,
     @Json(name = "release_date")
     val release_date: String,
+    @Json(name = "backdrop_path")
+    var backdrop_path: String
 
     ) {
-    fun getMovieModel() = Movie(
+    fun getMovieListModel() = Movie(
         title = this.title,
-        release_date = this.release_date
+        release_date = this.release_date,
+        backdrop_path = this.backdrop_path
     )
 }

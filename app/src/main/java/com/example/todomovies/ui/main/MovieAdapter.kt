@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todomovies.R
 import com.example.todomovies.data.model.Movie
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.list_item_movie.view.*
 
 class MovieAdapter (private val list: List<Movie>): RecyclerView.Adapter<MovieAdapter.ViewHolder>(){
@@ -24,10 +25,15 @@ class MovieAdapter (private val list: List<Movie>): RecyclerView.Adapter<MovieAd
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         private val title = itemView.nome_filme
         private val year = itemView.ano_filme
+        private val imageUrl = itemView.image_movie
 
         fun bindView(holder: Movie){
             title.text = holder.title
             year.text = holder.release_date
+            val url = holder.backdrop_path
+
+            Picasso.get().load(url).resize(50,50).into(imageUrl)
+
         }
     }
 

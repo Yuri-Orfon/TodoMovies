@@ -13,4 +13,7 @@ object Api {
 
     val serviceMovie: Service = initRetrofit()
         .create(Service::class.java)
+
+    val serviceRecyclerList: Service = initRetrofit()
+        .create(Service::class.java)
 }

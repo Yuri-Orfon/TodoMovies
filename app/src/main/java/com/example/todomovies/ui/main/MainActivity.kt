@@ -6,8 +6,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.todomovies.R
 import com.example.todomovies.data.model.Movie
 import com.squareup.picasso.Picasso
@@ -24,10 +22,10 @@ class MainActivity : AppCompatActivity() {
 
     fun initializer(){
         val URL_IMAGE = "http://image.tmdb.org/t/p/w500"
-
         val viewModel: MovieViewModel = ViewModelProviders.of(this).get(MovieViewModel::class.java)
         initRecyclerView(viewModel)
         initMainMovie(viewModel, URL_IMAGE)
+        initMoviesList(viewModel)
     }
 
     fun initRecyclerView(viewModel: MovieViewModel) {
@@ -40,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-        viewModel.getMovies()
+        viewModel.getMoviesList()
     }
 
     fun initMainMovie(viewModel: MovieViewModel, URL_IMAGE: String) {
@@ -56,12 +54,18 @@ class MainActivity : AppCompatActivity() {
                 number_likes.setText(vote_count)
 
                 val url = URL_IMAGE + backdrop_path
-                Glide.with(this)
+                Picasso.get()
                     .load(url)
                     .into(imageView)
 
             }
         })
         viewModel.getMoviesApi()
+    }
+
+    fun initMoviesList(viewModel: MovieViewModel) {
+        viewModel.movieLiveData.observe(this, Observer {
+
+        })
     }
 }
