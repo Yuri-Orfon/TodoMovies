@@ -14,8 +14,7 @@ import retrofit2.Response
 class MovieViewModel : ViewModel() {
     val movieLiveData: MutableLiveData<List<Movie>> = MutableLiveData()
     val mainMovieLiveData: MutableLiveData<MainMovie> = MutableLiveData()
-
-    private val idUrl = 499
+    private val idUrl = 550
 
     fun getMoviesApi(){
         Api.serviceMovie.getMoviesDetail(idUrl).enqueue(object: Callback<MainMovie> {
@@ -28,9 +27,8 @@ class MovieViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<MainMovie>, t: Throwable) {
-                Log.i("APIMOVIE-ERROR-FAIL", "Erro no onResponse")
+                Log.i("APIMOVIE-ERROR-FAIL", "Erro no onResponse - getMoviesApi")
             }
-
         })
     }
 
@@ -54,7 +52,7 @@ class MovieViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<RecyclerList>, t: Throwable) {
-
+                Log.i("APIMOVIE-ERROR-FAIL", "Erro no onResponse - getMoviesList")
             }
         })
     }
