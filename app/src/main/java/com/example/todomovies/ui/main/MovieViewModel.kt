@@ -15,9 +15,10 @@ class MovieViewModel : ViewModel() {
     val movieLiveData: MutableLiveData<List<Movie>> = MutableLiveData()
     val mainMovieLiveData: MutableLiveData<MainMovie> = MutableLiveData()
 
+    private val idUrl = 499
 
     fun getMoviesApi(){
-        Api.serviceMovie.getMoviesDetail().enqueue(object: Callback<MainMovie> {
+        Api.serviceMovie.getMoviesDetail(idUrl).enqueue(object: Callback<MainMovie> {
             override fun onResponse(call: Call<MainMovie>, response: Response<MainMovie>) {
                 if(response.isSuccessful) {
                     response.body()?.let { movie ->
@@ -35,7 +36,7 @@ class MovieViewModel : ViewModel() {
 
     fun getMoviesList(){
         val URL_IMAGE = "http://image.tmdb.org/t/p/w500"
-        Api.serviceRecyclerList.getMoviesList().enqueue(object: Callback<RecyclerList> {
+        Api.serviceRecyclerList.getMoviesList(idUrl).enqueue(object: Callback<RecyclerList> {
             override fun onResponse(call: Call<RecyclerList>, response: Response<RecyclerList>) {
                 if (response.isSuccessful) {
                     response.body()?.let { movieList ->

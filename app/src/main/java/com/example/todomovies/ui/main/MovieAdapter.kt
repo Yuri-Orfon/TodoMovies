@@ -32,7 +32,7 @@ class MovieAdapter (private val list: List<Movie>): RecyclerView.Adapter<MovieAd
             year.text = holder.release_date
             val url = holder.backdrop_path
 
-            Picasso.get().load(url).resize(50,50).into(imageUrl)
+            Picasso.get().load(url).into(imageUrl)
 
         }
     }
